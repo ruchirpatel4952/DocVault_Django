@@ -1,0 +1,463 @@
+<!doctype html>
+{% load static%}
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>DocVault</title>
+
+    <!-- google fonts -->
+    <link href=" //fonts.googleapis.com/css2?family=Jost:wght@300;400;600&display=swap" rel="stylesheet">
+
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href=" {% static 'assets/css/style-starter.css' %} ">
+<style>
+        #preloader{
+  position: fixed;
+	width: 100%;
+	height: 100vh;
+	background: #2B2C2F
+	url('https://cdn.dribbble.com/users/408943/screenshots/2465356/infinity-loader.gif')
+	 no-repeat center center;
+	z-index: 99999;
+}
+    </style>
+
+  </head>
+  <body onload="myFunc()">
+  <div id="preloader"></div>
+<!--header-->
+<header id="site-header" class="fixed-top">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark stroke">
+       <h1>
+        <a class="navbar-brand" href=" {% url 'index.html' %} ">
+          <img src=" {% static 'assets/images/Untitled-1.png' %} " alt="Your logo" title="Your logo" style="height:35px;" />
+          Doc Vault
+        </a>
+       </h1>
+      <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
+        data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+        </span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mx-lg-auto">
+          <li class="nav-item @@home__active">
+            <a class="nav-link" href=" {% url 'index.html' %} ">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item @@about__active">
+            <a class="nav-link" href=" {% url 'about.html' %} ">About</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href=" {% url 'premium.html' %} ">Premium</a>
+          </li>
+          <li class="nav-item @@contact__active">
+            <a class="nav-link" href=" {% url 'contact.html' %} ">Contact</a>
+          </li>
+          <li class="nav-item">
+                  <a class="nav-link" href=" {% url 'signlog.html' %} ">Login</span></a>
+          </li>
+        </ul>
+        </div>
+
+        <!--/search-right-->
+        <div class="header-search">
+          <!-- full screen form controls -->
+          <i class='icon-close fa fa-close material-icons'></i>
+          <form action="error.html" method="GET" class='search-input'>
+            <input class='input-search' placeholder='Start Typing' type='text'>
+          </form>
+        </div>
+        <!--//search-right-->
+
+        <!-- toggle switch for light and dark theme -->
+        <div class="mobile-position">
+          <nav class="navigation">
+            <div class="theme-switch-wrapper">
+              <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox">
+                <div class="mode-container py-1">
+                  <i class="gg-sun"></i>
+                  <i class="gg-moon"></i>
+                </div>
+              </label>
+            </div>
+          </nav>
+        </div>
+        <!-- //toggle switch for light and dark theme -->
+    </nav>
+
+  </div>
+</header>
+  <!--/header-->
+
+<!-- Service breadcrumb -->
+<section class="w3l-about-breadcrumb text-center">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-5">
+        <div class="container py-lg-5 py-md-4">
+            <h2 class="title pt-md-5 pt-4">Premium Packages</h2>
+            <p class="inner-page-para mt-2">We work with bold brands that we believe in</p>
+        </div>
+        <div class="hero-overlay"></div>
+    </div>
+</section>
+<!-- //Service breadcrumb -->
+
+
+ <!-- service section -->
+ <section class="w3l-features py-5" id="work">
+    <div class="container py-lg-5 py-md-4 py-2">
+        <div class="title-content text-center mb-md-5 mb-4">
+            <h3 class="title-small"> Check our services</h3>
+            <h3 class="title-big mx-lg-5">Introduce our best and reliable Packages for all your business</h3>
+        </div>
+
+        <div class="row mt-lg-4 mt-5">
+        {% for data in context2 %}
+            <div class="col-lg-4">
+                <div class="service-grid-left">
+                    <h3 class="title-service mb-md-4 mb-3">{{data.package_type}}</h3>
+                    <h3 class="title-service mb-md-4" style="font-size:25px;">₹ {{data.package_price|floatformat }}</h3>
+                    <p class="text-para mb-lg-2 mb-0">  Unlimited days <br>{{data.package_description}}</p>
+                    <a href=" {% url 'signlog.html' %} " class="btn btn-style btn-primary mt-lg-4 mt-4">Buy</a>
+                </div>
+            </div>
+        {% endfor %}
+
+        {% for data in context %}
+            <div class="col-lg-4">
+                <div class="service-grid-left">
+                    <h3 class="title-service mb-md-4 mb-3">{{data.package_type}}</h3>
+                    <h3 class="title-service mb-md-4" style="font-size:25px;">₹ {{data.package_price|floatformat }}</h3>
+                    <p class="text-para mb-lg-2 mb-0"> {{data.package_duration}} days<br>{{data.package_description}}</p>
+                    <a href=" {% url 'signlog.html' %} " class="btn btn-style btn-primary mt-lg-4 mt-4">Buy</a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+
+
+    </div>
+</section>
+<section class="w3l-quote-6">
+    <div class="quote-info py-5">
+        <div class="container py-lg-5 py-md-4 py-2">
+            <div class="quote-grids-info row align-items-center">
+                <div class="quote-gd-left col-lg-6 pr-lg-5">
+                    <!-- <h6 class="title-small text-light mb-2">Innovative technology</h6> -->
+                    <h3 class="title-big text-white">We use latest technologies that are proven and practical</h3>
+                    <div class="mt-4">
+                        <div class="quote-sec-info">
+                            <div class="appyl-sub-icon">
+                                <span class="fa fa-map"></span>
+                            </div>
+                            <div class="appyl-sub-icon-info">
+                                <h5>Our Location</h5>
+                                <p>The Acropolis Service Rd, Thaltej, Ahmedabad, Gujarat 380059.</p>
+                            </div>
+                        </div>
+                        <div class="quote-sec-info">
+                            <div class="appyl-sub-icon">
+                                <span class="fa fa-phone"></span>
+                            </div>
+                            <div class="appyl-sub-icon-info">
+                                <h5>Phone Numbers</h5>
+                                <p><a href=" tel:+91 9408909787 ">+91 9408909787</a>,
+                                    <a href=" tel:+91 9427547444 ">+91 9427547444</a></p>
+                            </div>
+                        </div>
+                        <div class="quote-sec-info">
+                            <div class="appyl-sub-icon">
+                                <span class="fa fa-envelope-o"></span>
+                            </div>
+                            <div class="appyl-sub-icon-info">
+                                <h5>Email Addresses</h5>
+                                <p><a href=" mailto:docvault77@gmail.com " class="mail">docvault77@gmail.com</a>,
+                                    <a href=" mailto:docvaultcontact@gmail.com" class="mail">docvaultcontact@gmail.com</a></p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="quote-gd-right col-lg-6 mt-lg-0 mt-5">
+
+                    <div class="quote-form mx-auto">
+
+                        <form action="{% url 'premiumcontact' %}" method="post">
+                            {% csrf_token %}
+                            <h3 class="title-service mb-2">Contact us</h3>
+                            <p class="mb-4">We have made it easy for clients to reach us and get their solutions weaved</p>
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-control" placeholder="Your Name"
+                                    required="">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control" placeholder="Email"
+                                    required="">
+                            </div>
+                            <div class="form-group">
+                              <input type="text" name="subject" class="form-control" placeholder="Subject"
+                                  required="">
+                          </div>
+                            <div class="form-group mb-4">
+                                <textarea class="form-control" name="message" placeholder="Message"></textarea>
+                            </div>
+                            <button class="btn btn-style btn-primary d-block submit">Get Started</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- //quote-6-->
+
+<!-- footer -->
+<footer class="w3l-footer-29-main">
+  <div class="footer-29 py-5">
+    <div class="container py-md-4">
+
+      <div class="row footer-top-29">
+
+        <div class="col-lg-4 col-md-6 footer-list-29 footer-1">
+          <div class="footer-logo mb-4">
+            <h1>
+              <a class="navbar-brand" href=" {% url 'index.html' %} ">
+                <img src=" {% static 'assets/images/Untitled-1.png' %} " alt="Your logo" title="Your logo" style="height:35px;" />
+                Doc Vault
+              </a>
+             </h1>
+          </div>
+          <p style="padding-right:30px;">Simply share a link to files in Doc Vault - big or small - and recipients can view or download in seconds.</p>
+          <div class="main-social-footer-29 mt-md-4 mt-3">
+            <a href="https://www.facebook.com/people/Dov-Vault/100077508705426/" class="facebook"><span class="fa fa-facebook"></span></a>
+            <a href="https://twitter.com/docvault77" class="twitter"><span class="fa fa-twitter"></span></a>
+            <a href="https://www.instagram.com/doc.vault/" class="instagram"><span class="fa fa-instagram"></span></a>
+            <a href="https://www.linkedin.com/in/doc-vault-3bb32a230/" class="linkedin"><span class="fa fa-linkedin"></span></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 footer-list-29 footer-1 pr-lg-5 mt-md-0 mt-5">
+          <h6 class="footer-title-29"><b>Contact Information </b></h6>
+          <p class="mb-2"><b>Address :</b> The Acropolis Service Rd, Thaltej, Ahmedabad, Gujarat 380059</p>
+         <p class="mb-2"><b>Phone Number :</b> <a href=" tel:9687771011 ">9687771011</a></p>
+            <p class="mb-2"><b>Email : </b><a href=" mailto:docvault77@gmail.com">docvault77@gmail.com</a></p>
+            <p><b>Support : </b><a href=" mailto:docvaultcontact@gmail.com">docvaultcontact@gmail.com</a></p>
+        </div>
+
+        <div class="col-lg-2 col-md-6 col-sm-5 col-6 footer-list-29 footer-2 mt-lg-0 mt-5">
+          <ul>
+            <h6 class="footer-title-29"><b>Services</b></h6>
+            <li><a href=" {% url 'about.html#services' %} ">Document Security</a></li>
+            <li><a href=" {% url 'about.html#services' %} ">Safe Sharing</a></li>
+            <li><a href=" {% url 'about.html#services' %} ">Easy Access</a></li>
+            <li><a href=" {% url 'about.html#services' %} ">Advance algorithm and strategies</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-6 col-sm-5 col-6 footer-list-29 footer-2 mt-lg-0 mt-5" style="margin-left: 0px">
+          <ul>
+            <h6 class="footer-title-29"><b>Company</b></h6>
+             <li><a href=" {% url 'index.html' %} "> Home</a></li>
+            <li><a href=" {% url 'about.html' %} "> About company</a></li>
+            <li><a href=" {% url 'premium.html' %} ">Premium</a></li>
+            <li><a href=" {% url 'contact.html' %} ">Get in touch</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <!-- copyright -->
+  <section class="w3l-copyright text-center">
+    <div class="container">
+      <p class="copy-footer-29">©️ 2022 Doc Vault. All rights reserved.</p>
+    </div>
+
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+      &#10548;
+    </button>
+      <script>
+      var preloader = document.getElementById('preloader');
+      function myFunc(){
+        preloader.style.display = 'none';
+      }
+    </script>
+    <script>
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function () {
+        scrollFunction()
+      };
+
+      function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          document.getElementById("movetop").style.display = "block";
+        } else {
+          document.getElementById("movetop").style.display = "none";
+        }
+      }
+
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+    </script>
+    <!-- /move top -->
+  </section>
+  <!-- //copyright -->
+</footer>
+  <!-- //footer -->
+
+
+  <!-- Template JavaScript -->
+  <script src=" {% static 'assets/js/jquery-3.3.1.min.js' %} "></script>
+  <script src=" {% static 'assets/js/theme-change.js' %} "></script>
+
+  <!-- libhtbox -->
+  <script src=" {% static 'assets/js/lightbox-plus-jquery.min.js' %} "></script>
+  <!-- libhtbox -->
+
+  <!-- banner slick slider -->
+  <script src=" {% static 'assets/js/slick.js' %} "></script>
+  <script src=" {% static 'assets/js/script.js' %} "></script>
+  <!-- //banner slick slider -->
+
+  <!-- magnific popup -->
+  <script src=" {% static 'assets/js/jquery.magnific-popup.min.js' %} "></script>
+  <script>
+    $(document).ready(function () {
+      $('.popup-with-zoom-anim').magnificPopup({
+        type: 'inline',
+
+        fixedContentPos: false,
+        fixedBgPos: true,
+
+        overflowY: 'auto',
+
+        closeBtnInside: true,
+        preloader: false,
+
+        midClick: true,
+        removalDelay: 300,
+        mainClass: 'my-mfp-zoom-in'
+      });
+
+      $('.popup-with-move-anim').magnificPopup({
+        type: 'inline',
+
+        fixedContentPos: false,
+        fixedBgPos: true,
+
+        overflowY: 'auto',
+
+        closeBtnInside: true,
+        preloader: false,
+
+        midClick: true,
+        removalDelay: 300,
+        mainClass: 'my-mfp-slide-bottom'
+      });
+    });
+  </script>
+  <!-- //magnific popup -->
+
+  <!-- script for tesimonials carousel slider -->
+  <script src=" {% static 'assets/js/owl.carousel.js' %} "></script>
+
+  <script>
+    $(document).ready(function () {
+      $("#owl-demo1").owlCarousel({
+        loop: true,
+        margin: 20,
+        nav: false,
+        responsiveClass: true,
+        responsive: {
+          0: {
+            items: 1,
+            nav: false
+          },
+          768: {
+            items: 1,
+            nav: false
+          },
+          1000: {
+            items: 1,
+            nav: false,
+            loop: false
+          }
+        }
+      })
+    })
+  </script>
+  <!-- //script for tesimonials carousel slider -->
+
+  <!-- disable body scroll which navbar is in active -->
+  <script>
+    $(function () {
+      $('.navbar-toggler').click(function () {
+        $('body').toggleClass('noscroll');
+      })
+    });
+  </script>
+  <!-- disable body scroll which navbar is in active -->
+
+  <!--/MENU-JS-->
+  <script>
+    $(window).on("scroll", function () {
+      var scroll = $(window).scrollTop();
+
+      if (scroll >= 80) {
+        $("#site-header").addClass("nav-fixed");
+      } else {
+        $("#site-header").removeClass("nav-fixed");
+      }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function () {
+      $("header").toggleClass("active");
+    });
+    $(document).on("ready", function () {
+      if ($(window).width() > 991) {
+        $("header").removeClass("active");
+      }
+      $(window).on("resize", function () {
+        if ($(window).width() > 991) {
+          $("header").removeClass("active");
+        }
+      });
+    });
+  </script>
+  <!--//MENU-JS-->
+
+  <!-- Search -->
+  <script>
+    $('.control').click(function () {
+      $('body').addClass('search-active');
+      $('.input-search').focus();
+    });
+
+    $('.icon-close').click(function () {
+      $('body').removeClass('search-active');
+    });
+  </script>
+  <!-- //Search -->
+
+  <script src=" {% static 'assets/js/bootstrap.min.js' %} "></script>
+
+
+  </body>
+
+  </html>

@@ -1,0 +1,309 @@
+<!doctype html>
+{%load static%}
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href=" favicon.ico ">
+    <title>Doc Vault</title>
+    <!-- Simple bar CSS -->
+    <link rel="stylesheet" href=" {% static 'css/simplebar.css' %} ">
+    <!-- Fonts CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- Icons CSS -->
+    <link rel="stylesheet" href=" {% static 'css/feather.css' %} ">
+    <link rel="stylesheet" href=" {% static 'css/dataTables.bootstrap4.css' %} ">
+    <!-- Date Range Picker CSS -->
+    <link rel="stylesheet" href=" {% static 'css/daterangepicker.css' %} ">
+    <!-- App CSS -->
+    <link rel="stylesheet" href=" {% static 'css/app-light.css' %} " id="lightTheme" disabled>
+    <link rel="stylesheet" href=" {% static 'css/app-dark.css' %} " id="darkTheme">
+  </head>
+  <body class="vertical  dark  " onload="myFunc()">
+  <div id="preloader"></div>
+    <div class="wrapper">
+      <nav class="topnav navbar navbar-light">
+        <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
+          <i class="fe fe-menu navbar-toggler-icon"></i>
+        </button>
+        
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link text-muted my-2" id="modeSwitcher" data-mode="dark">
+              <i class="fe fe-sun fe-16"></i>
+            </a>
+          </li>
+          
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="avatar avatar-sm mt-2">
+                <img src=" /media/{{request.session.log_user_dp}} "height="30px" width="25px" alt="..." class="avatar-img rounded-circle">
+              </span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href=" {% url 'DocVaultProfile.html' %} ">Profile</a>
+              <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
+        <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
+          <i class="fe fe-x"><span class="sr-only"></span></i>
+        </a>
+        <nav class="vertnav navbar navbar-light">
+          <!-- nav bar -->
+          <div class="w-100 mb-4 d-flex">
+            <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href=" {% url 'DocVaultIndex.html' %} ">
+              <img src=" {% static 'assets/images/logo.png' %} " height="35px" width="35px">
+            </a>
+          </div>
+          <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item ">
+              <a href=" {% url 'DocVaultIndex.html' %} " class="nav-link">
+                <i class="fe fe-home fe-16"></i>
+                <span class="ml-3 item-text">Dashboard</span><span class="sr-only">(current)</span>
+              </a>
+            </li>
+          </ul>
+          <p class="text-muted nav-heading mt-3 mb-1">
+            <span>My Files</span>
+          </p>
+          <ul class="navbar-nav flex-fill w-100 mb-2">
+
+            <li class="nav-item w-100">
+              <a class="nav-link" href=" {% url 'DocVaultMyUploads.html' %} ">
+                <i class="fe fe-hard-drive fe-16"></i>
+                <span class="ml-3 item-text">My Uploads</span>
+              </a>
+            </li>
+
+             <p class="text-muted nav-heading mt-3 mb-1">
+            <span>My Bin</span>
+          </p>
+          <ul class="navbar-nav flex-fill w-100 mb-2">
+
+            <li class="nav-item w-100">
+              <a class="nav-link" href=" {% url 'DocVaultRecycle.html' %} ">
+                <i class="fe fe-trash-2 fe-16"></i>
+                <span class="ml-3 item-text">Recycle Bin</span>
+              </a>
+            </li>
+
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+
+              <p class="text-muted nav-heading mt-3 mb-1">
+               <span>Upload Files</span>
+              </p>
+            <li class="nav-item dropdown ">
+              <a href=" #dashboard " data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                <i class="fe fe-upload-cloud fe-16"></i>
+                <span class="ml-3 item-text">Upload Files</span><span class="sr-only">(current)</span>
+              </a>
+              <ul class="collapse list-unstyled pl-4 w-100" id="dashboard">
+                <li class="nav-item active">
+                  <a class="nav-link pl-3" href=" {% url 'DocVaultFileUploadPublic.html' %} "><span class="ml-1 item-text">Public</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link pl-3" href=" {% url 'DocVaultFileUploadPrivate.html' %} "><span class="ml-1 item-text">Private</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link pl-3" href=" {% url 'DocVaultFileUploadUserPrivilege.html' %} "><span class="ml-1 item-text">User Priviledged</span></a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+
+              <p class="text-muted nav-heading mt-3 mb-1">
+                <span>Share Files</span>
+              </p>
+            <li class="nav-item dropdown ">
+              <a href=" #share " data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                <i class="fe fe-share-2 fe-16"></i>
+                <span class="ml-3 item-text">Share Files</span><span class="sr-only">(current)</span>
+              </a>
+              <ul class="collapse list-unstyled pl-4 w-100" id="share">
+
+
+                <li class="nav-item">
+                  <a class="nav-link pl-3" href=" {% url 'showup' %} "><span class="ml-1 item-text"> User Privilege</span></a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <p class="text-muted nav-heading mt-3 mb-1">
+            <span>Download Files</span>
+          </p>
+
+            <li class="nav-item w-100  active">
+              <a class="nav-link" href=" {% url 'DocVaultSharedFiles.html' %} ">
+                <i class="fe fe-users fe-16"></i>
+                <span class="ml-3 item-text">Shared With Me</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href=" {% url 'DocVaultDownloadFiles.html' %} " class="nav-link">
+                <i class="fe fe-download-cloud fe-16"></i>
+                <span class="ml-3 item-text">Public Files</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+               <a class="nav-link " href=" {% url 'showprivate' %} ">
+                  <i class="fe fe-lock fe-16"></i>
+                 <span class="ml-3 item-text"> Private Files</span>
+<!--              <a href=" {% url 'DocVaultDownloadFiles.html' %} " class="nav-link">-->
+
+<!--                <span class="ml-3 item-text">Private Files</span>-->
+              </a>
+            </li>
+
+            <li class="nav-item">
+                 </a>
+                </li>
+
+            <p class="text-muted nav-heading mt-3 mb-1">
+            <span>Premium Package</span>
+            </p>
+            <li class="nav-item">
+              <a href=" {% url 'DocVaultPremium.html' %} " class="nav-link">
+                <i class="fe fe-grid fe-16"></i>
+                <span class="ml-3 item-text">Premium</span>
+              </a>
+            </li>
+
+            <p class="text-muted nav-heading mt-3 mb-1">
+            <span>Help Desk</span>
+            </p>
+            <li class="nav-item">
+              <a href=" {% url 'DocVaultEnquiry.html' %} " class="nav-link">
+                <i class="fe fe-help-circle fe-16"></i>
+                <span class="ml-3 item-text">Enquiry</span>
+              </a>
+            </li>
+            <p class="text-muted nav-heading mt-3 mb-1">
+            <span>Suggest Us</span>
+          </p>
+            <li class="nav-item ">
+              <a href=" {% url 'DocVaultFeedback.html' %} " class="nav-link">
+                <i class="fe fe-message-square fe-16"></i>
+                <span class="ml-3 item-text">Feedback</span>
+              </a>
+            </li>
+          </ul>
+
+
+          <div class="btn-box w-100 mt-4 mb-1">
+            <a href="{% url 'logout' %}" class="btn mb-2 btn-primary btn-lg btn-block">
+              <span class="medium">Logout</span>
+            </a>
+          </div>
+        </nav>
+      </aside>
+      <main role="main" class="main-content">
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-12">
+              <h2 class="mb-2 page-title">Shared With Me</h2>
+              <p class="card-text">Download Documents Shared With You.</p>
+              <div class="row my-4">
+                <!-- Small table -->
+                <div class="col-md-12">
+                  <div class="card shadow">
+                    <div class="card-body">
+                      <!-- table -->
+                      <table class="table datatables" id="dataTable-1">
+                        <thead>
+                          <tr>
+                            <th></th>
+                            <th>No</th>
+                            <th>Doc Name</th>
+                            <th>Doc Desc</th>
+                            <th>Security Technique</th>
+                            <th>Doc Type</th>
+                            <th>Doc Size</th>
+                            <th>Uploaded Date</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for data in context %}
+                          <tr>
+                            <td></td>
+                            <td>{{ forloop.counter }}</td>
+                            <td><a href="{{ data.document_id.document.url }}">{{ data.document_id.document_title }}</a></td>
+                            <td>{{ data.document_id.document_description }}</td>
+                            <td>{{ data.document_id.document_security_technique }}</td>
+                            <td>{{ data.document_id.document_publish_date_time }}</td>
+                            <td>{{ data.document_id.document_type }}</td>
+                            <td>{{ data.document_id.document_size }}</td>
+                            <td>
+                              <a href="{{ data.document_id.document.url }}" download>
+                                <button type="button" class="btn mb-2 btn-secondary">Download</button>
+                              </a>
+                            </td>
+                          </tr>
+                        {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+       
+     <!-- main -->
+    </div> <!-- .wrapper -->
+    <script src=" {% static 'js/jquery.min.js' %} "></script>
+    <script src=" {% static 'js/popper.min.js' %} "></script>
+    <script src=" {% static 'js/moment.min.js' %} "></script>
+    <script src=" {% static 'js/bootstrap.min.js' %} "></script>
+    <script src=" {% static 'js/simplebar.min.js' %} "></script>
+    <script src=" {% static 'js/daterangepicker.js' %} "></script>
+    <script src=" {% static 'js/jquery.stickOnScroll.js' %} "></script>
+    <script src=" {% static 'js/tinycolor-min.js' %} "></script>
+    <script src=" {% static 'js/config.js' %} "></script>
+    <script src=" {% static 'js/jquery.dataTables.min.js' %} "></script>
+    <script src=" {% static 'js/dataTables.bootstrap4.min.js' %} "></script>
+    <script>
+      $('#dataTable-1').DataTable(
+      {
+        autoWidth: true,
+        "lengthMenu": [
+          [16, 32, 64, -1],
+          [16, 32, 64, "All"]
+        ]
+      });
+    </script>
+    <script src=" {% static 'js/apps.js' %} "></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag()
+      {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-56159088-1');
+    </script>
+  <script>
+      var preloader = document.getElementById('preloader');
+      function myFunc(){
+        preloader.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>
