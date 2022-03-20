@@ -16,44 +16,39 @@ def DocVaultIndex(request):
     try:
         if request.session.is_empty():
             return render(request, 'signlog.html')
-
         else:
             try:
-
                 uid = request.session['log_user_id']
                 user = user_details.objects.get(id=uid)
 
-                myuploadcount = document_details.objects.all().filter(login_id=request.session['log_user_id'])
-                sharedwithmecount = document_privilege.objects.all().filter(login_id=request.session['log_user_id'])
-                mypubliccount = document_details.objects.all().filter(login_id=request.session['log_user_id'],
-                                                                      document_security_technique='1')
-                myprivatecount = document_details.objects.all().filter(login_id=request.session['log_user_id'],
-                                                                       document_security_technique='2')
-                myuserprivilege = document_details.objects.all().filter(login_id=request.session['log_user_id'],
-                                                                        document_security_technique='3')
-
-                package = user_package_details.objects.get(login_id=user_details(uid))
-                packagestr = str(package.premium_package_id)
-
+                object = user_package_details.objects.get(login_id=uid)
+                packagestr = str(object.premium_package_id)
                 packagedetails = premium_package.objects.get(id=packagestr[-2])
+                p_date = object.package_purchase_date
+                today = date.today()
+                delta = today - p_date
+                if delta.days <= packagedetails.package_duration or (packagestr=='Basic'):
+                    myuploadcount = document_details.objects.all().filter(login_id=request.session['log_user_id'])
+                    sharedwithmecount = document_privilege.objects.all().filter(login_id=request.session['log_user_id'])
 
-                context = {
-                    'myuploadscount': len(myuploadcount),
-                    'sharedwithmecount': len(sharedwithmecount),
-                    'publicdocuments': len(mypubliccount),
-                    'privatedocuments': len(myprivatecount),
-                    'userprivilegedocuments': len(myuserprivilege),
-                    'packagename': packagedetails.package_type
+                    package = user_package_details.objects.get(login_id=user_details(uid))
+                    packagestr = str(package.premium_package_id)
 
-                }
+                    packagedetails = premium_package.objects.get(id=packagestr[-2])
 
+                    context = {
+                        'myuploadscount': len(myuploadcount),
+                        'sharedwithmecount': len(sharedwithmecount),
+                        'packagename': packagedetails.package_type
+                    }
+                    return render(request, 'DocVaultIndex.html', context)
+                else:
+                    return render(request, 'error.html')
             except user_details.DoesNotExist:
                 user = None
-            return render(request, 'DocVaultIndex.html', context)
     except:
         print("Error")
     return render(request, 'signlog.html')
-
 
 def DocVaultMyUploads(request):
     getdata = document_details.objects.all().filter(login_id=request.session['log_user_id']).filter(document_bin=0)

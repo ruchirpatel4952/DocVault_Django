@@ -226,6 +226,7 @@
                             <th></th>
                             <th>No</th>
                             <th>Doc Name</th>
+                            <th>Doc Owner</th>
                             <th>Doc Desc</th>
                             <th>Security Technique</th>
                             <th>Doc Type</th>
@@ -240,6 +241,7 @@
                             <td></td>
                             <td>{{ forloop.counter }}</td>
                             <td><a href="{{ data.document_id.document.url }}">{{ data.document_id.document_title }}</a></td>
+                            <td>{{ data.document_id.login_id.firstname }} {{ data.document_id.login_id.lastname }}</td>
                             <td>{{ data.document_id.document_description }}</td>
                             <td>{{ data.document_id.document_security_technique }}</td>
                             <td>{{ data.document_id.document_publish_date_time }}</td>
