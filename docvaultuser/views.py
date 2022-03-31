@@ -356,7 +356,7 @@ def uploadPublic(request):
             query.save()
             return redirect('/DocVaultMyUploads')
 
-        if userpackageid == '3' and len(userdocs) + 1 < 15:
+        if userpackageid == '3' and len(userdocs) + 1 <= 15:
             if userpackageid == '3' and f_size[-2:] == 'KB':
                 query = document_details(login_id=user_details(id=request.session['log_user_id']), document_type=f_type,
                                          document_security_technique=security_technique(id=1), document_title=f_title,
@@ -417,7 +417,7 @@ def uploadPrivate(request):
         userpackagestr = str(userpackage.premium_package_id)
         userpackageid = userpackagestr[-2]
 
-        if (len(userdocs) + 1 < 15 and userpackageid == '3') or userpackageid == '1' or userpackageid == '2':
+        if (len(userdocs) + 1 <= 15 and userpackageid == '3') or userpackageid == '1' or userpackageid == '2':
             f_passwordh = hashlib.md5(f_password.encode('utf-8')).hexdigest()
             query = document_details(login_id=user_details(id=request.session['log_user_id']), document_type=f_type,
                                      document_security_technique=security_technique(id=2), document_title=f_title,
@@ -427,7 +427,7 @@ def uploadPrivate(request):
             query.save()
             return redirect('/DocVaultMyUploads')
         else:
-            return redirect('/DocVaultIndex')
+            return redirect('/DocVaultDocumentCheck')
     else:
         print('error')
 
@@ -447,7 +447,7 @@ def uploadUserPrivilege(request):
         userpackagestr = str(userpackage.premium_package_id)
         userpackageid = userpackagestr[-2]
 
-        if (len(userdocs) + 1 < 15 and userpackageid == '3') or userpackageid == '1' or userpackageid == '2':
+        if (len(userdocs) + 1 <= 15 and userpackageid == '3') or userpackageid == '1' or userpackageid == '2':
             query = document_details(login_id=user_details(id=request.session['log_user_id']), document_type=f_type,
                                      document_security_technique=security_technique(id=3), document_title=f_title,
                                      document_description=f_desc, document_status=f_status,
@@ -456,7 +456,7 @@ def uploadUserPrivilege(request):
             query.save()
             return redirect('/DocVaultMyUploads')
         else:
-            return redirect('/DocVaultIndex')
+            return redirect('/DocVaultDocumentCheck')
     else:
         print('error')
 
@@ -556,10 +556,6 @@ def Profile(request):
         try:
             pic = request.FILES['pic']
             request.session['log_user_dp'] = "dp_folder/" + str(pic)
-        except:
-            pic = request.session['log_user_dp']
-            request.session['log_user_dp'] = str(pic)
-
 
             query = user_details.objects.get(id=request.session['log_user_id'])
             query.phone_no = phoneno
@@ -568,6 +564,35 @@ def Profile(request):
             query.dp = pic
             query.city = CITY
             query.state = STATE
+            query.email = email
+            query.firstname = firstname
+            query.lastname = lastname
+            query.gender = gender
+            query.save()
+
+            request.session['log_user_phoneno'] = phoneno
+            request.session['log_user_dob'] = str(dob)
+            request.session['log_user_address'] = str(address)
+            request.session['log_user_city'] = str(CITY)
+            request.session['log_user_state'] = str(STATE)
+            request.session.save()
+
+            return redirect("/DocVaultProfile")
+        except:
+            pic = request.session['log_user_dp']
+            request.session['log_user_dp'] = str(pic)
+
+            query = user_details.objects.get(id=request.session['log_user_id'])
+            query.phone_no = phoneno
+            query.dob = str(dob)
+            query.address = str(address)
+            query.dp = pic
+            query.city = CITY
+            query.state = STATE
+            query.email = email
+            query.firstname = firstname
+            query.lastname = lastname
+            query.gender = gender
             query.save()
 
             request.session['log_user_phoneno'] = phoneno

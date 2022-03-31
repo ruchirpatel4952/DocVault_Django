@@ -231,13 +231,13 @@
                         <div class="form-row">
                           <div class="col mb-3">
                             <label for="validationCustom3">First Name</label>
-                            <input type="text" name="firstname" class="form-control" id="validationCustom3" placeholder="Enter First Name" disabled value={{ firstname }} required>
+                            <input type="text" name="firstname" class="form-control" id="validationCustom3" placeholder="Enter First Name"  value={{ firstname }} required>
                             <div class="valid-feedback"> Looks good! </div>
                           </div>
 
                           <div class="col mb-3">
                             <label for="validationCustom3">Last Name</label>
-                            <input type="text" name="lastname" class="form-control" id="validationCustom3" placeholder="Enter Last Name" disabled value={{ lastname }} required>
+                            <input type="text" name="lastname" class="form-control" id="validationCustom3" placeholder="Enter Last Name"  value={{ lastname }} required>
                             <div class="valid-feedback"> Looks good! </div>
                           </div>
                         </div> 
@@ -246,7 +246,7 @@
                         <div class="form-row">
                           <div class="col">
                             <label for="exampleInputEmail2">Email address</label>
-                            <input type="email" name="email" class="form-control" id="exampleInputEmail2" placeholder="Enter Email" value={{ email }} disabled aria-describedby="emailHelp1" required>
+                            <input type="email" name="email" class="form-control" id="exampleInputEmail2" placeholder="Enter Email" value={{ email }}  aria-describedby="emailHelp1" required>
                             <div class="invalid-feedback"> Please use a valid email </div>
                             <small id="emailHelp1" class="form-text text-muted">We'll never share your email with anyone else.</small>
                           </div>
@@ -271,14 +271,14 @@
 <!--                          {% endif %}-->
 <!--                        </div> -->
 
-                        <div class="form-row">
-                          <div class="col mb-3 mt-2">
-                            <label for="validationCustom3">Gender</label>
-                            <input type="text" name="gender" class="form-control" id="validationCustom3" placeholder="Enter Gender" disabled value={{ gender }} required>
-                            <div class="valid-feedback"> Looks good! </div>
-                          </div>
+                        <div class="form-group mb-3">
+                              <label for="example-select">Gender</label>
+                              <select class="form-control" id="example-select" name="gender" required>
+                                <option selected value="{{ gender }}">{{ gender }} (current)</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                              </select>
                         </div>
-
 <!--                        <div class="form-row ml-1">-->
 <!--                          <div>-->
 <!--                            <p class="mb-2">Gender</p>-->
