@@ -56,6 +56,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href=" {% url 'DocVaultProfile.html' %} ">Profile</a>
+              <a class="dropdown-item" href=" {% url 'DocVaultSetPassword.html' %} ">Reset Password</a>
               <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
             </div>
           </li>
@@ -92,6 +93,18 @@
               </a>
             </li>
 
+             <p class="text-muted nav-heading mt-3 mb-1">
+            <span>My Bin</span>
+          </p>
+          <ul class="navbar-nav flex-fill w-100 mb-2">
+
+            <li class="nav-item w-100">
+              <a class="nav-link" href=" {% url 'DocVaultRecycle.html' %} ">
+                <i class="fe fe-trash-2 fe-16"></i>
+                <span class="ml-3 item-text">Recycle Bin</span>
+              </a>
+            </li>
+
             <ul class="navbar-nav flex-fill w-100 mb-2">
 
               <p class="text-muted nav-heading mt-3 mb-1">
@@ -117,25 +130,16 @@
           </ul>
 
 
-            <ul class="navbar-nav flex-fill w-100 mb-2">
+          <p class="text-muted nav-heading mt-3 mb-1">
+            <span>Share Files</span>
+          </p>
 
-              <p class="text-muted nav-heading mt-3 mb-1">
-                <span>Share Files</span>
-              </p>
-            <li class="nav-item dropdown ">
-              <a href=" #share " data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+            <li class="nav-item w-100">
+              <a class="nav-link" href=" {% url 'showup' %} ">
                 <i class="fe fe-share-2 fe-16"></i>
-                <span class="ml-3 item-text">Share Files</span><span class="sr-only">(current)</span>
+                <span class="ml-3 item-text">Share Files</span>
               </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="share">
-
-
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href=" {% url 'showup' %} "><span class="ml-1 item-text"> User Privilege</span></a>
-                </li>
-              </ul>
             </li>
-          </ul>
 
           <p class="text-muted nav-heading mt-3 mb-1">
             <span>Download Files</span>
@@ -156,7 +160,7 @@
 
             <li class="nav-item">
                <a class="nav-link " href=" {% url 'showprivate' %} ">
-                  <i class="fe fe-download-cloud fe-16"></i>
+                  <i class="fe fe-lock fe-16"></i>
                  <span class="ml-3 item-text"> Private Files</span>
 <!--              <a href=" {% url 'DocVaultDownloadFiles.html' %} " class="nav-link">-->
 
@@ -171,13 +175,13 @@
             <p class="text-muted nav-heading mt-3 mb-1">
             <span>Premium Package</span>
             </p>
-            <li class="nav-item">
+            <li class="nav-item ">
               <a href=" {% url 'DocVaultPremium.html' %} " class="nav-link">
                 <i class="fe fe-grid fe-16"></i>
                 <span class="ml-3 item-text">Premium</span>
               </a>
             </li>
-            
+
             <p class="text-muted nav-heading mt-3 mb-1">
             <span>Help Desk</span>
             </p>
@@ -190,15 +194,15 @@
             <p class="text-muted nav-heading mt-3 mb-1">
             <span>Suggest Us</span>
           </p>
-            <li class="nav-item">
+            <li class="nav-item ">
               <a href=" {% url 'DocVaultFeedback.html' %} " class="nav-link">
                 <i class="fe fe-message-square fe-16"></i>
                 <span class="ml-3 item-text">Feedback</span>
               </a>
             </li>
           </ul>
-          
-          
+
+
           <div class="btn-box w-100 mt-4 mb-1">
             <a href="{% url 'logout' %}" class="btn mb-2 btn-primary btn-lg btn-block">
               <span class="medium">Logout</span>
@@ -212,7 +216,7 @@
             <div class="col-12">
               <div class="row align-items-center mb-2">
                 <div class="col">
-                  <h2 class="h5 page-title">Welcome <b>{{ request.session.log_user_firstname }}!</b></h2>
+                  <h3 class=" page-title">Welcome <b>{{ request.session.log_user_firstname }} {{ request.session.log_user_lastname }}!</b></h3>
                 </div>
                 <div class="col-auto">
                   <form class="form-inline">
@@ -226,7 +230,7 @@
                 </div>
               </div>
               <!-- widgets -->
-              <div class="row my-4">
+              <!-- <div class="row my-4">
 
                 <div class="col-md-4 mb-4">
                   <div class="card shadow">
@@ -259,13 +263,12 @@
                     </div>
                   </div>
                 </div>
-                
+
                 <div class="col-md-4 mb-4">
                   <div class="card shadow">
                     <div class="card-body">
                       <div class="row align-items-center">
                         <div class="col">
-<!--                          <span class="h2 mb-0">{{ request.session.log_user_package_status }}</span>-->
                           <span class="h2 mb-0">{{ packagename }}</span>
                           <p class="small text-muted mb-0">Current Premium Package</p>
                         </div>
@@ -276,60 +279,168 @@
                     </div>
                   </div>
                 </div>
-                
-              </div> <!-- end section -->
-              
 
-              <div class="mb-2 align-items-center">
-                <div class="card shadow mb-4">
-                  <div class="card-body">
-                    <div class="row mt-1 align-items-center">
-                      <div class="col-12 col-lg-4 text-left pl-4">
-                        <p class="mb-1 small text-muted">Balance</p>
-                        <span class="h3">$12,600</span>
-                        <span class="small text-muted">+20%</span>
-                        <span class="fe fe-arrow-up text-success fe-12"></span>
-                        <p class="text-muted mt-2"> Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui </p>
-                      </div>
-                      <div class="col-6 col-lg-2 text-center py-4">
-                        <p class="mb-1 small text-muted">Today</p>
-                        <span class="h3">$2600</span><br />
-                        <span class="small text-muted">+20%</span>
-                        <span class="fe fe-arrow-up text-success fe-12"></span>
-                      </div>
-                      <div class="col-6 col-lg-2 text-center py-4 mb-2">
-                        <p class="mb-1 small text-muted">Goal Value</p>
-                        <span class="h3">$260</span><br />
-                        <span class="small text-muted">+6%</span>
-                        <span class="fe fe-arrow-up text-success fe-12"></span>
-                      </div>
-                      <div class="col-6 col-lg-2 text-center py-4">
-                        <p class="mb-1 small text-muted">Completions</p>
-                        <span class="h3">26</span><br />
-                        <span class="small text-muted">+20%</span>
-                        <span class="fe fe-arrow-up text-success fe-12"></span>
-                      </div>
-                      <div class="col-6 col-lg-2 text-center py-4">
-                        <p class="mb-1 small text-muted">Conversion</p>
-                        <span class="h3">6%</span><br />
-                        <span class="small text-muted">-2%</span>
-                        <span class="fe fe-arrow-down text-danger fe-12"></span>
+              </div>  -->
+
+
+
+
+
+
+              <div class="row my-4">
+
+                <div class="col-md-4 mb-4">
+                  <div class="card shadow">
+                    <div class="card-body">
+                      <div class="row align-items-center">
+                        <div class="col">
+                          <span class="h2 mb-0">{{ publicdocuments }}</span>
+                          <p class="small text-muted mb-0">My Public Documents</p>
+                        </div>
+                        <div class="col-auto">
+                          <span class="fe fe-32 fe-download-cloud text-muted mb-0"></span>
+                        </div>
                       </div>
                     </div>
-                    <div class="chartbox mr-4">
-                      <div id="areaChart"></div>
+                  </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                  <div class="card shadow">
+                    <div class="card-body">
+                      <div class="row align-items-center">
+                        <div class="col">
+                          <span class="h2 mb-0">{{ privatedocuments }}</span>
+                          <p class="small text-muted mb-0">My Private Documents</p>
+                        </div>
+                        <div class="col-auto">
+                          <span class="fe fe-32 fe-lock text-muted mb-0"></span>
+                        </div>
+                      </div>
                     </div>
-                  </div> <!-- .card-body -->
-                </div> <!-- .card -->
-              </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                  <div class="card shadow">
+                    <div class="card-body">
+                      <div class="row align-items-center">
+                        <div class="col">
+                          <span class="h2 mb-0">{{ userprivilegedocuments }} </span>
+                          <p class="small text-muted mb-0">My User Privilege Documents</p>
+                        </div>
+                        <div class="col-auto">
+                          <span class="fe fe-32 fe-user text-muted mb-0"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div> 
+
+
+<!--              <div class="mb-2 align-items-center">-->
+<!--                <div class="card shadow mb-4">-->
+<!--                  <div class="card-body">-->
+<!--                    <div class="row mt-1 align-items-center">-->
+<!--                      <div class="col-12 col-lg-4 text-left pl-4">-->
+<!--                        <p class="mb-1 small text-muted">Balance</p>-->
+<!--                        <span class="h3">$12,600</span>-->
+<!--                        <span class="small text-muted">+20%</span>-->
+<!--                        <span class="fe fe-arrow-up text-success fe-12"></span>-->
+<!--                        <p class="text-muted mt-2"> Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui </p>-->
+<!--                      </div>-->
+<!--                      <div class="col-6 col-lg-2 text-center py-4">-->
+<!--                        <p class="mb-1 small text-muted">Today</p>-->
+<!--                        <span class="h3">$2600</span><br />-->
+<!--                        <span class="small text-muted">+20%</span>-->
+<!--                        <span class="fe fe-arrow-up text-success fe-12"></span>-->
+<!--                      </div>-->
+<!--                      <div class="col-6 col-lg-2 text-center py-4 mb-2">-->
+<!--                        <p class="mb-1 small text-muted">Goal Value</p>-->
+<!--                        <span class="h3">$260</span><br />-->
+<!--                        <span class="small text-muted">+6%</span>-->
+<!--                        <span class="fe fe-arrow-up text-success fe-12"></span>-->
+<!--                      </div>-->
+<!--                      <div class="col-6 col-lg-2 text-center py-4">-->
+<!--                        <p class="mb-1 small text-muted">Completions</p>-->
+<!--                        <span class="h3">26</span><br />-->
+<!--                        <span class="small text-muted">+20%</span>-->
+<!--                        <span class="fe fe-arrow-up text-success fe-12"></span>-->
+<!--                      </div>-->
+<!--                      <div class="col-6 col-lg-2 text-center py-4">-->
+<!--                        <p class="mb-1 small text-muted">Conversion</p>-->
+<!--                        <span class="h3">6%</span><br />-->
+<!--                        <span class="small text-muted">-2%</span>-->
+<!--                        <span class="fe fe-arrow-down text-danger fe-12"></span>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                    <div class="chartbox mr-4">-->
+<!--                      <div id="areaChart"></div>-->
+<!--                    </div>-->
+<!--                  </div> &lt;!&ndash; .card-body &ndash;&gt;-->
+<!--                </div> &lt;!&ndash; .card &ndash;&gt;-->
+<!--              </div>-->
               <!-- linechart -->
                <!-- .col -->
                <!-- .col-md -->
                 <!-- .container-fluid -->
+              <div class="my-5 p-5">
+                <div class="text-center">
+                  <h3 class="mb-0">Features of DocVault [V 1.0]</h2>
+                </div>  
+                <div class="row my-4">
+                  <div class="col-6 col-lg-3">
+                    <div class="card shadow mb-4">
+                      <div class="card-body">
+                        <i class="fe fe-info fe-32 text-primary"></i>
+                        <a href="#">
+                          <h3 class="h5 mt-4 mb-1">Getting start</h3>
+                        </a>
+                        <p class="text-muted">Start working with theme like dark and light</p>
+                      </div> <!-- .card-body -->
+                    </div> <!-- .card -->
+                  </div> <!-- .col-md-->
+                  <div class="col-6 col-lg-3">
+                    <div class="card shadow mb-4">
+                      <div class="card-body">
+                        <i class="fe fe-help-circle fe-32 text-success"></i>
+                        <a href="{% url 'DocVaultEnquiry.html' %}">
+                          <h3 class="h5 mt-4 mb-1">Enquiries</h3>
+                        </a>
+                        <p class="text-muted">Get answers for any doubts and queries</p>
+                      </div> <!-- .card-body -->
+                    </div> <!-- .card -->
+                  </div> <!-- .col-md-->
+                  <div class="col-6 col-lg-3">
+                    <div class="card shadow mb-4">
+                      <div class="card-body">
+                        <i class="fe fe-globe fe-32 text-warning"></i>
+                        <a href="{% url 'logout' %}">
+                          <h3 class="h5 mt-4 mb-1">Knowledge Base</h3>
+                        </a>
+                        <p class="text-muted">Learn more about products?Note:- you would be logged out.</p>
+                      </div> <!-- .card-body -->
+                    </div> <!-- .card -->
+                  </div> <!-- .col-md-->
+                  <div class="col-6 col-lg-3">
+                    <div class="card shadow">
+                      <div class="card-body">
+                        <i class="fe fe-alert-triangle fe-32 text-danger"></i>
+                        <a href="{% url 'DocVaultFeedback.html' %}">
+                          <h3 class="h5 mt-4 mb-1">Reporting</h3>
+                        </a>
+                        <p class="text-muted">Report a bug in our feedback section.</p>
+                      </div> <!-- .card-body -->
+                    </div> <!-- .card -->
+                  </div> <!-- .col-md-->
+                </div> <!-- .row -->
+              </div>  
             </div>
           </div>
         </div>
-      </main> <!-- main -->
+      </main>
     </div> <!-- .wrapper -->
     <script src=" {% static 'js/jquery.min.js' %} "></script>
     <script src=" {% static 'js/popper.min.js' %} "></script>

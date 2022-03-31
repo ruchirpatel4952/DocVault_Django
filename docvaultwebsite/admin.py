@@ -5,11 +5,11 @@ from .models import contact_us
 
 class show_user_details(admin.ModelAdmin):
     list_display = (
-        'email', 'password', 'firstname', 'lastname', 'dob', 'phone_no', 'address', 'city', 'state')
+        'email', 'firstname','password', 'lastname', 'gender', 'dob', 'phone_no', 'city', 'state', 'address')
 
 
 class show_contact_us(admin.ModelAdmin):
-    list_display = ('name', 'email', 'subject', 'message')
+    list_display = ('email', 'name', 'subject', 'message')
 
 
 admin.site.register(user_details, show_user_details)

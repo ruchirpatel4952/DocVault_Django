@@ -21,7 +21,7 @@ class document_details(models.Model):
     document_size = models.CharField(max_length=50)
     document = models.FileField(upload_to='document_folder')
     document_publish_date_time = models.DateField(auto_now_add=True, editable=False)
-    document_password = models.CharField(max_length=30)
+    document_password = models.CharField(max_length=130)
     document_bin = models.IntegerField(default=0)
     document_sent = models.IntegerField(default=0)
 
@@ -30,7 +30,7 @@ class document_privilege(models.Model):
     login_id = models.ForeignKey(user_details, on_delete=models.CASCADE)
     document_id = models.ForeignKey(document_details, on_delete=models.CASCADE)
     privilege_status = models.IntegerField()
-    sent_to = models.CharField(max_length=30,default="")
+    sent_to = models.CharField(max_length=30, default="")
 
 
 class feedback(models.Model):
@@ -72,4 +72,3 @@ class enquiry(models.Model):
     email = models.EmailField(max_length=30, default="")
     enquiry_message = models.TextField()
     enquiry_subject = models.CharField(max_length=50)
-

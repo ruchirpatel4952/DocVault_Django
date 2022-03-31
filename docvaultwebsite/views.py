@@ -70,13 +70,12 @@ def signup(request):
                 messages.info(request, 'Account already exists. Please try other email.')
                 return render(request, 'signlog.html')
 
-
         except user_details.DoesNotExist:
             passwordh = hashlib.md5(password.encode('utf-8')).hexdigest()
 
             query = user_details(firstname=firstname, lastname=lastname, email=email, password=passwordh,
-                                 gender=gender, phone_no=phoneno, dp='dp_folder/defaultuser.jpg',
-                                 role=2, status=1,
+                                 gender=gender, phone_no=phoneno, dp='dp_folder/defaultuser.jpg' ,
+                                 confirm_password=passwordh,role=2, status=1,
                                  )
             query.save()
 
@@ -103,16 +102,8 @@ def signin(request):
             user = user_details.objects.get(email=useremail, password=userpasswordh)
             request.session['log_user_id'] = user.id
             request.session['log_user_email'] = user.email
-            request.session['log_user_password'] = user.password
             request.session['log_user_firstname'] = user.firstname
             request.session['log_user_lastname'] = user.lastname
-            request.session['log_user_gender'] = user.gender
-            request.session['log_user_phoneno'] = user.phone_no
-            request.session['log_user_dob'] = str(user.dob)
-            request.session['log_user_address'] = user.address
-            request.session['log_user_city'] = str(user.city)
-            request.session['log_user_state'] = str(user.state)
-            request.session['log_user_dp'] = str(user.dp)
             request.session.save()
         except user_details.DoesNotExist:
             user = None
@@ -132,16 +123,8 @@ def logout(request):
     try:
         del request.session['log_user_id']
         del request.session['log_user_email']
-        del request.session['log_user_password']
         del request.session['log_user_firstname']
         del request.session['log_user_lastname']
-        del request.session['log_user_gender']
-        del request.session['log_user_phoneno']
-        del request.session['log_user_dob']
-        del request.session['log_user_address']
-        del request.session['log_user_city']
-        del request.session['log_user_state']
-
     except:
         pass
     return render(request, 'index.html')
@@ -179,7 +162,7 @@ def resetemail(request):
             import smtplib
 
             gmail_user = 'docvault77@gmail.com'
-            gmail_password = 'Docvault@777'
+            gmail_password = 'Docvault@9510714099'
 
             sent_from = gmail_user
             to = [email]

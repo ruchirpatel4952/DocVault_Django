@@ -20,6 +20,7 @@ urlpatterns = [
     re_path('DocVaultPremium', views.DocVaultPremium, name="DocVaultPremium.html"),
 
     re_path('DocVaultProfile', views.DocVaultProfile, name="DocVaultProfile.html"),
+    re_path('DocVaultSetPassword', views.DocVaultSetPassword, name="DocVaultSetPassword.html"),
     re_path('DocVaultSharedFiles', views.DocVaultSharedFiles, name="DocVaultSharedFiles.html"),
 
     path('DocVaultShareEmail/<int:id>', views.DocVaultShareEmail, name="DocVaultShareEmail.html"),
@@ -38,11 +39,12 @@ urlpatterns = [
     re_path('showpublic', views.showpublic, name="showpublic"),
     re_path('showprivate', views.showprivate, name="showprivate"),
     re_path('showup', views.showup, name="showup"),
+    re_path('DocVaultSet', views.DocVaultSet, name="DocVaultSet"),
+
 
     path('delete/<int:id>', views.delete, name="delete"),
     path('restore/<int:id>', views.restore, name="restore"),
     path('movetobin/<int:id>', views.movetobin, name="movetobin"),
-
     path('share/<int:id>', views.share, name="share"),
     path('unsend', views.unsend, name="unsend"),
     path('unsendselect/<int:id>', views.DocVaultUnsendSelect,name="unsend_select"),
