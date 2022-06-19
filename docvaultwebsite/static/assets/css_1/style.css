@@ -326,13 +326,13 @@ input {
 .inputbox input:focus{
     border: 1px solid #00dfc4;
 }
-.inputbox:nth-child(2) input:valid ~span,
-.inputbox:nth-child(2) input:focus ~span{
+.inputbox:nth-child(even) input:valid ~span,
+.inputbox:nth-child(even) input:focus ~span{
     background: #00dfc4;
     color: #212529;
 }
-.inputbox:nth-child(1) input:valid ~span,
-.inputbox:nth-child(1) input:focus ~span{
+.inputbox:nth-child(odd) input:valid ~span,
+.inputbox:nth-child(odd) input:focus ~span{
     background: #00dfc4;
     color: #212529;
 }
