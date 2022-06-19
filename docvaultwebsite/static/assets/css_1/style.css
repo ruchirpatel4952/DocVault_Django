@@ -315,24 +315,14 @@ input {
 }
 .inputbox input:valid ~span,
 .inputbox input:focus ~span{
-    color: #00dfc4;
     transform: translateX(10px) translateY(-7px);
     font-size: 0.65em;
     padding: 0 10px;
-    background: #212529;
+    background: #00dfc4;
+    color: #212529;
     letter-spacing: 0.2em;
 }
 .inputbox input:valid,
 .inputbox input:focus{
     border: 1px solid #00dfc4;
-}
-.inputbox:nth-child(even) input:valid ~span,
-.inputbox:nth-child(even) input:focus ~span{
-    background: #00dfc4;
-    color: #212529;
-}
-.inputbox:nth-child(odd) input:valid ~span,
-.inputbox:nth-child(odd) input:focus ~span{
-    background: #00dfc4;
-    color: #212529;
 }
