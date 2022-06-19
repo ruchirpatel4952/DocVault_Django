@@ -1,0 +1,573 @@
+
+<!doctype html>
+{% load static%}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>DocVault</title>
+
+    <!-- google fonts -->
+    <link href="//fonts.googleapis.com/css2?family=Jost:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Template CSS -->
+    <link rel="stylesheet" href=" {% static 'assets/css/style-starter.css' %} ">
+    <style>
+        #preloader{
+  position: fixed;
+	width: 100%;
+	height: 100vh;
+	background: #2B2C2F
+	url("{% static 'assets/images/loader.gif' %}")
+	 no-repeat center center;
+	z-index: 99999;
+}
+    </style>
+  </head>
+  <body onload="myFunc()">
+  <div id="preloader"></div>
+<!--header-->
+<header id="site-header" class="fixed-top">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark stroke">
+       <h1>
+        <a class="navbar-brand" href=" {% url 'index.html' %} ">
+          <img src=" {% static 'assets/images/Untitled-1.png' %} " alt="Your logo" title="Your logo" style="height:35px;" />
+          Doc Vault
+        </a>
+       </h1>
+        <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
+          data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+          <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+          </span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav mx-lg-auto">
+            <li class="nav-item @@home__active">
+              <a class="nav-link" href=" {% url 'index.html' %} ">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href=" {% url 'about.html' %} ">About</a>
+            </li>
+            <li class="nav-item @@services__active">
+              <a class="nav-link" href=" {% url 'premium.html' %} ">Premium</a>
+            </li>
+            <li class="nav-item @@contact__active">
+              <a class="nav-link" href=" {% url 'contact.html' %} ">Contact</a>
+            </li>
+            <li class="nav-item">
+                    <a class="nav-link" href=" {% url 'signlog.html' %} ">Login</span></a>
+            </li>
+          </ul>
+          </div>
+  
+          <!--/search-right-->
+          <div class="header-search">
+            <!-- full screen form controls -->
+            <i class='icon-close fa fa-close material-icons'></i>
+            <form action="error.html" method="GET" class='search-input'>
+              <input class='input-search' placeholder='Start Typing' type='text'>
+            </form>
+          </div>
+          <!--//search-right-->
+
+          <!-- toggle switch for light and dark theme -->
+          <div class="mobile-position">
+            <nav class="navigation">
+              <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                  <input type="checkbox" id="checkbox">
+                  <div class="mode-container py-1">
+                    <i class="gg-sun"></i>
+                    <i class="gg-moon"></i>
+                  </div>
+                </label>
+              </div>
+            </nav>
+          </div>
+          <!-- //toggle switch for light and dark theme -->
+      </nav>
+
+    </div>
+  </header>
+  <!--/header-->
+
+<!-- about breadcrumb -->
+<section class="w3l-about-breadcrumb text-center">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-5">
+        <div class="container py-lg-5 py-md-4">
+            <h2 class="title pt-md-5 pt-4">About Us</h2>
+            <p class="inner-page-para mt-2">Experience you can trust, service you can count on.</p>
+        </div>
+        <div class="hero-overlay"></div>
+    </div>
+</section>
+<!-- //about breadcrumb -->
+<section class="w3l-aboutblock1" id="about">
+    <div class="midd-w3 py-5">
+        <div class="container py-lg-5 py-md-4 py-2">
+            <div class="row">
+                <div class="col-lg-6 left-wthree-img">
+                    <div class="position-relative">
+                        <img src=" {% static 'assets/images/about2.jpg' %} " alt="" class="img-fluid radius-image-full">
+                        <div class="bg-shape"> </div>
+                        <div class="imginfo__box">
+                            <div class="imginfo__info">
+                                <h6 class="imginfo__title">10+</h6>
+                                <p class="mt-1">Years of <br>Experience. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-lg-0 mt-5 about-right-faq align-self">
+                    <h5 class="title-small mb-1">About our company</h5>
+                    <h3 class="title-big">We are the next generation of Secure File Sharing.</h3>
+                    <p class="mt-4">We offer world class services to our customers. We ensure our customers are satisfied with our work.</p>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mt-5 pt-lg-5">
+                <div class="col-lg-4 col-md-6 grids-feature">
+                    <div class="area-box">
+                        <i class="fa fa-xing" aria-hidden="true"></i>
+                        <div class="area-box-info">
+                            <h4><a class="title-head">Secure Sharing</a></h4>
+                            <p>We provide secure sharing facility for our customers.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 grids-feature mt-md-0 mt-4">
+                    <div class="area-box">
+                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                        <div class="area-box-info">
+                            <h4><a class="title-head">Carefully stored</a></h4>
+                            <p>We ensure our users data to be stored in a secure location.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 grids-feature mt-lg-0 mt-4">
+                    <div class="area-box">
+                        <i class="fa fa-angellist" aria-hidden="true"></i>
+                        <div class="area-box-info">
+                            <h4><a class="title-head">Resonable Rates</a></h4>
+                            <p>We provide our services in resonable rates for users.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="w3l-about2 py-5">
+    <div class="container py-lg-5 py-md-4 py-2">
+        <div class="row cwp23-content align-items-center">
+
+            <div class="col-lg-6">
+                <h5 class="title-small mb-3"> Secure Storing and Document Sharing </h5>
+                <h3 class="title-big"> We store documents securely, and we do easy yet secure document sharing. </h3>
+
+                <div class="cwp23-text-cols mt-lg-5 mt-4">
+
+                    <div class="column">
+                        <span><b>6k+</b></span>
+                        <h4>Stored documents</h4>
+                        <p>We help our clients storing documents securely</p>
+                    </div>
+
+                    <div class="column">
+                        <span><b>13k+</b></span>
+                        <h4>Sharing links generated </h4>
+                        <p>We help our clients increase easy sharablity of documents </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-6 cwp23-text align-self mt-lg-0 mt-md-5 mt-4 pr-md-3 pr-2">
+                <img src=" {% static 'assets/images/ab.jpg' %} " alt="" class="radius-image img-fluid">
+            </div>
+
+            <div class="col-lg-3 col-6  cwp23-text align-self mt-lg-0 mt-md-5 mt-4 pl-md-3 pl-2">
+                <img src=" {% static 'assets/images/ab2.jpg' %} " alt="" class="radius-image img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="w3l-about4 py-5" id="cover">
+		<div class="container px-0 py-lg-5 py-md-4 py-2">
+			<div class="history-info position-relative">
+				<div class="heading mx-auto text-center">
+					<h3 class="title-big">We are the next generation of the Data Sharing</h3>
+					<p class="mt-3">Store, share, and collaborate on files and folders from any mobile device, tablet, or computer.</p>
+				</div>
+				<div class="position-relative">
+					<!-- dialog itself, mfp-hide class is required to make dialog hidden -->
+					<div id="small-dialog" class="zoom-anim-dialog mfp-hide">
+						<iframe src="https://www.youtube.com/embed/2N247cY2bEw" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+<section class="w3l-team py-5" id="team">
+    <div class="container py-lg-5 py-md-4 py-2">
+        <h5 class="title-small text-center"> Our Professionals </h5>
+        <h3 class="title-big text-center mx-0 mb-lg-5 mb-4">Meet the Team </h3>
+        <div class="row team-row">
+            <div class="col-lg-3 col-sm-6 team-wrap">
+                <div class="team-member text-center">
+                    <div class="team-img">
+                        <img src=" {% static 'assets/images/ruchir.png' %} " alt="" class="img-fluid radius-image" />
+
+                    </div>
+                    <a ><h6 class="team-title">	Ruchir Patel </h6></a>
+                    <p>Front End / Back End</p>
+                </div>
+            </div>
+            <!-- end team member -->
+
+            <div class="col-lg-3 col-sm-6 team-wrap mt-sm-0 mt-5">
+                <div class="team-member text-center">
+                    <div class="team-img">
+                        <img src=" {% static 'assets/images/shubh.jpeg' %} " alt="" class="img-fluid radius-image" style="height:440px" />
+
+                    </div>
+                    <a ><h6 class="team-title">  Shubh Kachhadiya </h6></a>
+                    <p>Front End / Back End</p>
+                </div>
+            </div>
+            <!-- end team member -->
+
+            <div class="col-lg-3 col-sm-6 team-wrap mt-lg-0 mt-5">
+                <div class="team-member last text-center">
+                    <div class="team-img">
+                        <img src=" {% static 'assets/images/rohan.png' %} " alt="" class="img-fluid radius-image" />
+
+                    </div>
+                    <a ><h6 class="team-title"> Rohan Panchasara </h6></a>
+                    <p>Front End / Back End</p>
+                </div>
+            </div>
+            <!-- end team member -->
+
+            <div class="col-lg-3 col-sm-6 team-wrap mt-lg-0 mt-5">
+                <div class="team-member last text-center">
+                    <div class="team-img">
+                        <img src=" {% static 'assets/images/aditya.png' %} " alt="" class="img-fluid radius-image" />
+
+                    </div>
+                    <a ><h6 class="team-title"> Aditya Rathod</h6></a>
+                    <p>Front End</p>
+                </div>
+            </div>
+            <!-- end team member -->
+
+        </div>
+    </div>
+</section>
+
+<section class="w3l-content-4 py-5" id="features" >
+  <div class="content-4-main py-lg-5 py-md-4">
+      <div class="container">
+          <div class="title-content text-center">
+              <h3 class="title-small"> Why choose us</h3>
+              <h3 class="title-big mx-lg-5">People choose us because we serve the best for everyone</h3>
+          </div>
+          <div class="content-info-in row mt-5 pt-lg-5">
+              <div class="content-left col-lg-6">
+                  <div class="row content4-right-grids mb-sm-5 mb-4">
+                      <div class="col-2 content4-right-icon">
+                          <div class="content4-icon icon-clr1">
+                              <span class="fa fa-shield"></span>
+                          </div>
+                      </div>
+                      <div class="col-10 content4-right-info pl-md-5 pl-4">
+                          <h6><a>Document Security</a></h6>
+                          <p>Defined in literal terms, is the maintenance of all of the essential documents stored, filed, backed up, processed, delivered, and eventually disposed of when no longer needed</p>
+                      </div>
+                  </div>
+                  <div class="row content4-right-grids mb-sm-5 mb-4">
+                      <div class="col-2 content4-right-icon">
+                          <div class="content4-icon icon-clr2">
+                              <span class="fa fa-search"></span>
+                          </div>
+                      </div>
+                      <div class="col-10 content4-right-info pl-md-5 pl-4">
+                          <h6><a>Easy Access</a></h6>
+                          <p>Easy Access means you will be able to quickly view the files you have stored and quickly open them and make updates.</p>
+                      </div>
+                  </div>
+              </div>
+              <div class="content-right col-lg-6 pl-lg-4 mt-lg-0 mt-2">
+                  <div class="row content4-right-grids mb-sm-5 mb-4">
+                      <div class="col-2 content4-right-icon">
+                          <div class="content4-icon icon-clr3">
+                              <span class="fa fa-share-alt"></span>
+                          </div>
+                      </div>
+                      <div class="col-10 content4-right-info pl-md-5 pl-4">
+                          <h6><a >Safe Sharing</a></h6>
+                          <p>It enables sharing files between different users/organizations confidentially and/or within a protected mode, secure from intruders or unauthorized users.</p>
+                      </div>
+                  </div>
+                  <div class="row content4-right-grids">
+                      <div class="col-2 content4-right-icon">
+                          <div class="content4-icon icon-clr4">
+                              <span class="fa fa-cogs"></span>
+                          </div>
+                      </div>
+                      <div class="col-10 content4-right-info pl-md-5 pl-4">
+                          <h6><a>Advance algorithm and strategies</a></h6>
+                          <p>Data are maintained and manipulated effectively using advance algorithms and profound strategies.</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- footer -->
+<footer class="w3l-footer-29-main">
+  <div class="footer-29 py-5">
+    <div class="container py-md-4">
+
+      <div class="row footer-top-29">
+
+        <div class="col-lg-4 col-md-6 footer-list-29 footer-1">
+          <div class="footer-logo mb-4">
+            <h1>
+              <a class="navbar-brand" href=" {% url 'index.html' %} ">
+                <img src=" {% static 'assets/images/Untitled-1.png' %} " alt="Your logo" title="Your logo" style="height:35px;" />
+                Doc Vault
+              </a>
+             </h1>
+          </div>
+          <p style="padding-right:30px;">Simply share a link to files in Doc Vault - big or small - and recipients can view or download in seconds.</p>
+          <div class="main-social-footer-29 mt-md-4 mt-3">
+            <a href="https://www.facebook.com/people/Dov-Vault/100077508705426/" class="facebook"><span class="fa fa-facebook"></span></a>
+            <a href="https://twitter.com/docvault77" class="twitter"><span class="fa fa-twitter"></span></a>
+            <a href="https://www.instagram.com/doc.vault/" class="instagram"><span class="fa fa-instagram"></span></a>
+            <a href="https://www.linkedin.com/in/doc-vault-3bb32a230/" class="linkedin"><span class="fa fa-linkedin"></span></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 footer-list-29 footer-1 pr-lg-5 mt-md-0 mt-5">
+          <h6 class="footer-title-29"><b>Contact Information </b></h6>
+          <p class="mb-2"><b>Address :</b> The Acropolis Service Rd, Thaltej, Ahmedabad, Gujarat 380059</p>
+          <p class="mb-2"><b>Phone Number :</b> <a href=" tel:9687771011 ">9687771011</a></p>
+            <p class="mb-2"><b>Email : </b><a href=" mailto:docvault77@gmail.com">docvault77@gmail.com</a></p>
+            <p><b>Support : </b><a href=" mailto:docvaultcontact@gmail.com">docvaultcontact@gmail.com</a></p>
+        </div>
+
+        <div class="col-lg-2 col-md-6 col-sm-5 col-6 footer-list-29 footer-2 mt-lg-0 mt-5">
+          <ul>
+            <h6 class="footer-title-29"><b>Services</b></h6>
+            <li><a href=" {% url 'about.html#services' %} ">Document Security</a></li>
+            <li><a href=" {% url 'about.html#services' %} ">Safe Sharing</a></li>
+            <li><a href=" {% url 'about.html#services' %} ">Easy Access</a></li>
+            <li><a href=" {% url 'about.html#services' %} ">Advance algorithm and strategies</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-6 col-sm-5 col-6 footer-list-29 footer-2 mt-lg-0 mt-5" style="margin-left: 0px">
+          <ul>
+            <h6 class="footer-title-29"><b>Company</b></h6>
+             <li><a href=" {% url 'index.html' %} "> Home</a></li>
+            <li><a href=" {% url 'about.html' %} "> About company</a></li>
+            <li><a href=" {% url 'premium.html' %} ">Premium</a></li>
+            <li><a href=" {% url 'contact.html' %} ">Get in touch</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <!-- copyright -->
+  <section class="w3l-copyright text-center">
+    <div class="container">
+      <p class="copy-footer-29">© 2022 Doc Vault. All rights reserved.</p>
+    </div>
+
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+      &#10548;
+    </button>
+      <script>
+      var preloader = document.getElementById('preloader');
+      function myFunc(){
+        preloader.style.display = 'none';
+      }
+    </script>
+    <script>
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function () {
+        scrollFunction()
+      };
+
+      function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          document.getElementById("movetop").style.display = "block";
+        } else {
+          document.getElementById("movetop").style.display = "none";
+        }
+      }
+
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+    </script>
+    <!-- /move top -->
+  </section>
+  <!-- //copyright -->
+</footer>
+  <!-- //footer -->
+  
+  
+  <!-- Template JavaScript -->
+  <script src=" {% static 'assets/js/jquery-3.3.1.min.js' %} "></script>
+  <script src=" {% static 'assets/js/theme-change.js' %} "></script>
+  
+  <!-- libhtbox -->
+  <script src=" {% static 'assets/js/lightbox-plus-jquery.min.js' %} "></script>
+  <!-- libhtbox -->
+  
+  <!-- banner slick slider -->
+  <script src=" {% static 'assets/js/slick.js' %} "></script>
+  <script src=" {% static 'assets/js/script.js' %} "></script>
+  <!-- //banner slick slider -->
+  
+  <!-- magnific popup -->
+  <script src=" {% static 'assets/js/jquery.magnific-popup.min.js' %} "></script>
+  <script>
+    $(document).ready(function () {
+      $('.popup-with-zoom-anim').magnificPopup({
+        type: 'inline',
+  
+        fixedContentPos: false,
+        fixedBgPos: true,
+  
+        overflowY: 'auto',
+  
+        closeBtnInside: true,
+        preloader: false,
+  
+        midClick: true,
+        removalDelay: 300,
+        mainClass: 'my-mfp-zoom-in'
+      });
+  
+      $('.popup-with-move-anim').magnificPopup({
+        type: 'inline',
+  
+        fixedContentPos: false,
+        fixedBgPos: true,
+  
+        overflowY: 'auto',
+  
+        closeBtnInside: true,
+        preloader: false,
+  
+        midClick: true,
+        removalDelay: 300,
+        mainClass: 'my-mfp-slide-bottom'
+      });
+    });
+  </script>
+  <!-- //magnific popup -->
+  
+  <!-- script for tesimonials carousel slider -->
+  <script src=" {% static 'assets/js/owl.carousel.js' %} "></script>
+  
+  <script>
+    $(document).ready(function () {
+      $("#owl-demo1").owlCarousel({
+        loop: true,
+        margin: 20,
+        nav: false,
+        responsiveClass: true,
+        responsive: {
+          0: {
+            items: 1,
+            nav: false
+          },
+          768: {
+            items: 1,
+            nav: false
+          },
+          1000: {
+            items: 1,
+            nav: false,
+            loop: false
+          }
+        }
+      })
+    })
+  </script>
+  <!-- //script for tesimonials carousel slider -->
+  
+  <!-- disable body scroll which navbar is in active -->
+  <script>
+    $(function () {
+      $('.navbar-toggler').click(function () {
+        $('body').toggleClass('noscroll');
+      })
+    });
+  </script>
+  <!-- disable body scroll which navbar is in active -->
+  
+  <!--/MENU-JS-->
+  <script>
+    $(window).on("scroll", function () {
+      var scroll = $(window).scrollTop();
+  
+      if (scroll >= 80) {
+        $("#site-header").addClass("nav-fixed");
+      } else {
+        $("#site-header").removeClass("nav-fixed");
+      }
+    });
+  
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function () {
+      $("header").toggleClass("active");
+    });
+    $(document).on("ready", function () {
+      if ($(window).width() > 991) {
+        $("header").removeClass("active");
+      }
+      $(window).on("resize", function () {
+        if ($(window).width() > 991) {
+          $("header").removeClass("active");
+        }
+      });
+    });
+  </script>
+  <!--//MENU-JS-->
+  
+  <!-- Search -->
+  <script>
+    $('.control').click(function () {
+      $('body').addClass('search-active');
+      $('.input-search').focus();
+    });
+  
+    $('.icon-close').click(function () {
+      $('body').removeClass('search-active');
+    });
+  </script>
+  <!-- //Search -->
+  
+  <script src=" {% static 'assets/js/bootstrap.min.js' %} "></script>
+  
+  
+  </body>
+  
+  </html>

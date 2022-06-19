@@ -1,0 +1,149 @@
+<!doctype html>
+{%load static%}
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href=" favicon.ico">
+    <title>Doc Vault</title>
+    <!-- Simple bar CSS -->
+    <link rel="stylesheet" href=" {% static 'css/simplebar.css' %} ">
+    <!-- Fonts CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- Icons CSS -->
+    <link rel="stylesheet" href=" {% static 'css/feather.css' %} ">
+    <!-- Date Range Picker CSS -->
+    <link rel="stylesheet" href=" {% static 'css/daterangepicker.css' %} ">
+    <!-- App CSS -->
+    <link rel="stylesheet" href=" {% static 'css/app-light.css' %} " id="lightTheme" disabled>
+    <link rel="stylesheet" href=" {% static 'css/app-dark.css' %} " id="darkTheme">
+    <style>
+      #preloader{
+        position: fixed;
+          width: 100%;
+          height: 100vh;
+          background: #2B2C2F
+          url("{% static 'assets/images/loader.gif' %}")
+           no-repeat center center;
+          z-index: 99999;
+      }
+    </style>
+  </head>
+  <body class="vertical  dark  " onload="myFunc()">
+  <div id="preloader"></div>
+    <div class="wrapper">
+      <main role="main" class="main-content">
+        <div class="container-fluid" style="margin:40px; margin-left:0px;">
+            <div class="col-12 col-lg-10 ">
+              <div class="card shadow">
+                <div class="card-body p-5 ">
+                  <div class="row mb-3">
+                    <div class="col-12 text-center mb-4">
+                      <img src="{% static 'assets/images/logo.png' %}" class="navbar-brand-img brand-sm mx-auto mb-4" alt="...">
+                      <h2 class="mb-0 text-uppercase">Invoice</h2>
+                      <p class="text-muted"> Doc Vault</p>
+                    </div>
+                    <div class="col-md-7">
+                      <p class="small text-muted text-uppercase mb-2">Invoice from</p>
+                      <p class="mb-4">
+                        <strong>Doc Vault<br/></strong><br /> docvault77@gmail.com <br />docvaultcontact@gmail.com <br /> Ahmedabad, Gujarat 380059<br /> (+91)9408909787<br />
+                      </p>
+                    </div>
+                    <div class="col-md-5">
+                      <p class="small text-muted text-uppercase mb-2">Invoice to</p>
+                      <p class="mb-4">
+                        <strong>{{ username }}</strong><br /><br /> {{ email }} <br />
+                        {{ phone }}<br />
+                      </p>
+                    </div>
+                  </div> <!-- /.row -->
+                  <table class="table table-borderless table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">Description</th>
+                        <th scope="col" class="text-right">Amount</th>
+                      </tr>
+                    </thead>
+                    <tbody >
+                      <tr>
+                        <td style="padding:30px;"> {{ package_name }} Package<br />
+                          <span class="small text-muted"> Sharing : Unlimited<br/></span>
+                          <span class="small text-muted"> Package Duration : {{ duration }} days<br/></span>
+                          <span class="small text-muted"> Package Purchase Time : {{ purchasetime }} </span>
+                        </td>
+                        <td class="text-right" style="padding:25px;">Total : ₹ {{ amount }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="row">
+                    <div class="col-2 text-center mt-2">
+                      <img src="{% static 'assets/images/qrcode.svg' %}" style="width:80px; height:80px" class="navbar-brand-img brand-sm mx-auto my-4" alt="...">
+                    </div>
+                    <div class="col-md-5 mt-5">
+                      <p>
+                        <strong style="font-size:17px;">Thanks for your purchase!<br/> We are grateful to have customers like you!</strong> </p>
+                    </div>
+
+                  </div> <!-- /.row -->
+                <a href=" {% url 'DocVaultIndex.html' %} ">
+                        <button type="button" class="btn btn-primary pt-2 pr-4 pb-2 pl-4" style="margin: auto; width: 100%; padding: 10px; margin-top:10px;" id="gtd">Go to Dashboard</button>
+                      </a>
+                </div> <!-- /.card-body -->
+              </div> <!-- /.card -->
+            </div> <!-- /.col-12 -->
+        </div> <!-- .container-fluid -->
+      </main>
+    </div> <!-- .wrapper -->
+    <script src=" {% static 'js/jquery.min.js' %} "></script>
+    <script src=" {% static 'js/popper.min.js' %} "></script>
+    <script src=" {% static 'js/moment.min.js' %} "></script>
+    <script src=" {% static 'js/bootstrap.min.js' %} "></script>
+    <script src=" {% static 'js/simplebar.min.js' %} "></script>
+    <script src=" {% static 'js/daterangepicker.js' %} "></script>
+    <script src=" {% static 'js/jquery.stickOnScroll.js' %} "></script>
+    <script src=" {% static 'js/tinycolor-min.js' %} "></script>
+    <script src=" {% static 'js/config.js' %} "></script>
+    <script src=" {% static 'js/d3.min.js' %} "></script>
+    <script src=" {% static 'js/topojson.min.js' %} "></script>
+    <script src=" {% static 'js/datamaps.all.min.js' %} "></script>
+    <script src=" {% static 'js/datamaps-zoomto.js' %} "></script>
+    <script src=" {% static 'js/datamaps.custom.js' %} "></script>
+    <script src=" {% static 'js/Chart.min.js' %} "></script>
+    <script>
+      /* defind global options */
+      Chart.defaults.global.defaultFontFamily = base.defaultFontFamily;
+      Chart.defaults.global.defaultFontColor = colors.mutedColor;
+    </script>
+    <script src=" {% static 'js/gauge.min.js' %} "></script>
+    <script src=" {% static 'js/jquery.sparkline.min.js' %} "></script>
+    <script src=" {% static 'js/apexcharts.min.js' %} "></script>
+    <script src=" {% static 'js/apexcharts.custom.js' %} "></script>
+    <script src=" {% static 'js/apps.js' %} "></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag()
+      {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-56159088-1');
+    </script>
+  <script>
+      var preloader = document.getElementById('preloader');
+      function myFunc(){
+        preloader.style.display = 'none';
+      }
+    </script>
+  <script>
+    document.getElementById('gtd').onclick = function(){
+      location.reload(true);
+    }
+  </script>
+  </body>
+</html>
