@@ -48,8 +48,6 @@ def signlog(request):
     return render(request, 'signlog.html')
 
 
-# FOR REGISTRATION VALIDATION
-
 def signup(request):
     if request.method == 'POST':
         firstname = request.POST.get('firstname')
@@ -89,8 +87,6 @@ def signup(request):
     return render(request, 'signlog.html')
 
 
-# FOR SIGNIN VALIDATION
-
 def signin(request):
     if request.method == 'POST':
         useremail = request.POST.get('email').lower().strip()
@@ -120,7 +116,6 @@ def signin(request):
     return render(request, 'signlog.html')
 
 
-# FOR LOGOUT ACCOUNT
 def logout(request):
     try:
         del request.session['log_user_id']
@@ -132,8 +127,6 @@ def logout(request):
         pass
     return render(request, 'index.html')
 
-
-# FOR CONTACTUS OF PREMIUM PAGE
 
 def contactuspremium(request):
     if request.method == 'POST':
